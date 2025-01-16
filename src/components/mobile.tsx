@@ -45,7 +45,7 @@ const CategoryItem = ({ child, onClick, isOpen }: { child: NavbarItem; onClick: 
   );
 };
 
-function NavbarMobile({ data }: { data: NavbarItem }) {
+function NavbarMobile({ items }: { items: NavbarItem[] }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [openGrandchildren, setOpenGrandchildren] = React.useState<Record<string, boolean>>({});
 
@@ -65,7 +65,7 @@ function NavbarMobile({ data }: { data: NavbarItem }) {
       </div>
 
       <ul className={`w-full laptop:flex laptop:justify-center`}>
-        {data.children?.map(
+        {items?.map(
           (parent) =>
             parent.children &&
             parent.children.length > 0 && (

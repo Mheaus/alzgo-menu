@@ -1,0 +1,40 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "ALLOW-FROM https://alzgo.fr"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'self'; frame-src 'self' https://alzgo.fr"
+        }
+      ]
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "query",
+          "key": "authorized"
+        }
+      ],
+      "headers": [
+        {
+          "key": "x-authorized",
+          "value": "true"
+        }
+      ]
+    }
+  ]
+}

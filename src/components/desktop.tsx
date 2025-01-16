@@ -30,33 +30,41 @@ interface ParentMenuItemProps {
   parent: NavbarItem;
 }
 
-function ParentMenuItem({ parent }: ParentMenuItemProps) {
+function DesktopNavItem({ parent }: ParentMenuItemProps) {
   const hasChildren = parent.children && parent.children.length > 0;
 
   return (
-    <li className="group">
+    <li className="group relative h-full">
       <a
         href={parent.to}
         key={parent.id}
-        className="mx-8 flex w-full gap-2 p-2 font-semibold text-white transition hover:text-second_blue"
+        className="flex size-full items-center gap-1 p-2 text-lg font-semibold text-white transition hover:!text-second_blue"
       >
         {parent.label}
 
-        {hasChildren && <Icon name="chevron-down" className="transition duration-200 group-hover:rotate-180" />}
+        {hasChildren && <Icon name="chevron-down" className="size-4 transition duration-200 group-hover:rotate-180" />}
       </a>
 
       {hasChildren && (
         <div
+          ref={(el) => {
+            if (!el || el.style.left) return;
+
+            /**
+             * This is a workaround to center the dropdown menu.
+             */
+            el.style.left = `-${el.getBoundingClientRect().x - window.innerWidth * 0.1}px`;
+          }}
           className={cn(
-            'fixed left-1/2 -translate-x-1/2 pt-2', // fixed position
+            'absolute top-3/4 w-[80vw] pt-2', // fixed position
             // transition based on group hover
-            'h-0 w-4/5 translate-y-8 overflow-hidden opacity-0 transition-all duration-200', // default state
-            'group-hover:grid group-hover:h-full group-hover:translate-y-0 group-hover:overflow-visible group-hover:opacity-100'
+            'z-0 h-0 translate-y-8 overflow-hidden opacity-0 transition-all duration-200', // default state
+            'group-hover:z-10 group-hover:grid group-hover:h-[80vh] group-hover:translate-y-0 group-hover:overflow-visible group-hover:opacity-100'
           )}
         >
           <ul
             className={cn(
-              'size-full max-h-[80vh] overflow-auto rounded-sm bg-white p-8 pb-32 shadow',
+              'size-full overflow-auto rounded-sm bg-white p-8 pb-32 shadow',
               'grid grid-cols-4 grid-rows-[repeat(minmax(1fr,150px),3)] gap-8' // grid layout
             )}
           >
@@ -70,14 +78,4 @@ function ParentMenuItem({ parent }: ParentMenuItemProps) {
   );
 }
 
-function NavbarDesktop({ data }: { data: NavbarItem }) {
-  return (
-    <nav className={cn('hidden h-16 w-full bg-dark_blue font-host', 'lg:flex lg:rounded-b-2xl')}>
-      <ul className="flex w-full items-center justify-center">
-        {data.children?.map((parent) => <ParentMenuItem key={parent.id} parent={parent} />)}
-      </ul>
-    </nav>
-  );
-}
-
-export default NavbarDesktop;
+export default DesktopNavItem;

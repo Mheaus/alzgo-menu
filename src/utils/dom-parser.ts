@@ -4,6 +4,24 @@ interface MenuItem {
   children?: MenuItem[];
 }
 
+function dedupeMenuItems(items: MenuItem[]): MenuItem[] {
+  const seen = new Map<string, MenuItem>();
+
+  items.forEach((item) => {
+    const key = `${item.text}-${item.href}`;
+    if (!seen.has(key)) {
+      seen.set(key, item);
+    } else {
+      const existingItem = seen.get(key);
+      if (existingItem && item.children) {
+        existingItem.children = dedupeMenuItems([...(existingItem.children || []), ...item.children]);
+      }
+    }
+  });
+
+  return Array.from(seen.values());
+}
+
 function parseMenu(html: string): MenuItem[] {
   const parser = new DOMParser();
   const doc = parser.parseFromString(html, 'text/html');
@@ -32,7 +50,7 @@ function parseMenu(html: string): MenuItem[] {
     menuItems.push(parseElement(item));
   });
 
-  return menuItems;
+  return dedupeMenuItems(menuItems);
 }
 
 export type { MenuItem };

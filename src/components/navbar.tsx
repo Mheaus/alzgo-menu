@@ -31,9 +31,9 @@ function Navbar() {
       >
         <ul className="flex w-full items-center justify-center gap-4">
           {navbarData?.map((parent) => <DesktopNavItem key={parent.id} parent={parent} />)}
+          {/* {navbarData?.map((parent) => <NavbarMobile key={parent.id} parent={parent} />)} */}
         </ul>
       </nav>
-      {/* <NavbarMobile data={data} /> */}
     </>
   );
 }

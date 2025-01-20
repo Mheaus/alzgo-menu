@@ -7,8 +7,15 @@ interface CategoryItemProps {
 }
 
 function CategoryItem({ item }: CategoryItemProps) {
+  const hisManyChildren = (item.children?.length || 0) > 6;
   return (
-    <li className="text-base">
+    <li
+      className={cn(
+        'text-base',
+        hisManyChildren && 'row-span-2'
+        // Add Row-span if too much children
+      )}
+    >
       <img src={item.img} className="lg:w-20" />
 
       <p className="mb-2 mt-4 font-semibold text-black">{item.label}</p>
@@ -65,7 +72,7 @@ function DesktopNavItem({ parent }: ParentMenuItemProps) {
           <ul
             className={cn(
               'size-full overflow-auto rounded-sm bg-white p-8 pb-32 shadow',
-              'grid grid-cols-4 grid-rows-[repeat(minmax(1fr,150px),3)] gap-8' // grid layout
+              'grid grid-cols-5 grid-rows-[repeat(minmax(1fr,150px),3)] gap-8' // grid layout
             )}
           >
             {parent.children!.map(

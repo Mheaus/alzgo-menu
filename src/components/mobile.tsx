@@ -1,4 +1,4 @@
-import arrowRight from '../assets/navbar/menu/arrowRight.png';
+import arrowRight from '../../public/assets/arrowRight.png';
 import { NavbarItem } from '../types/navbar-item';
 import * as React from 'react';
 import { cn } from '../utils/cn';
@@ -45,7 +45,7 @@ const CategoryItem = ({ child, onClick, isOpen }: { child: NavbarItem; onClick: 
   );
 };
 
-function NavbarMobile({ items }: { items: NavbarItem[] }) {
+function NavbarMobile({ parent }: { parent: NavbarItem[] }) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [openGrandchildren, setOpenGrandchildren] = React.useState<Record<string, boolean>>({});
 
@@ -65,7 +65,7 @@ function NavbarMobile({ items }: { items: NavbarItem[] }) {
       </div>
 
       <ul className={`w-full laptop:flex laptop:justify-center`}>
-        {items?.map(
+        {parent?.map(
           (parent) =>
             parent.children &&
             parent.children.length > 0 && (

@@ -1,4 +1,3 @@
-import arrowRight from '../../public/assets/arrowRight.png';
 import { NavbarItem } from '../types/navbar-item';
 import * as React from 'react';
 import { cn } from '../utils/cn';

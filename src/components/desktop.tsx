@@ -7,7 +7,7 @@ interface CategoryItemProps {
 }
 
 function CategoryItem({ item }: CategoryItemProps) {
-  const hisManyChildren = (item.children?.length || 0) > 6;
+  const hasManyChildren = (item.children?.length || 0) > 6;
   return (
     <li
       className={cn(

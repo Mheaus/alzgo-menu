@@ -72,7 +72,7 @@ function DesktopNavItem({ parent }: ParentMenuItemProps) {
           <ul
             className={cn(
               'size-full overflow-auto rounded-sm bg-white p-8 pb-32 shadow',
-              'grid grid-cols-5 grid-rows-[repeat(minmax(1fr,150px),3)] gap-8' // grid layout
+              'grid grid-cols-4 xl:grid-cols-5 grid-rows-[repeat(minmax(1fr,150px),3)] gap-8' // grid layout
             )}
           >
             {parent.children!.map(

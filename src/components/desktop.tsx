@@ -11,7 +11,7 @@ function CategoryItem({ item }: CategoryItemProps) {
 
   return (
     <li className={cn('text-base', hasManyChildren && 'row-span-2')}>
-      <img src={item.img} className="lg:w-20" />
+      <img src={item.img} className="size-24" />
 
       <p className="mb-2 mt-4 font-semibold text-black">{item.label}</p>
 

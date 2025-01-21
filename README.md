@@ -1,50 +1,94 @@
-# React + TypeScript + Vite
+# Alzgo Menu
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a React-based menu component for the Alzgo application. It includes both desktop and mobile navigation components, utilizing Vite for the build process and Tailwind CSS for styling.
 
-Currently, two official plugins are available:
+## Project Structure
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `src/`: Contains the source code for the project.
+  - `components/`: React components for the menu.
+  - `utils/`: Utility functions used across the project.
+  - `assets/`: Static assets like images.
+- `public/`: Static files that are served directly.
+- `vite.config.ts`: Vite configuration file.
+- `.env`: Environment variables.
 
-## Expanding the ESLint configuration
+## Scripts
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- `dev`: Start the development server.
+- `build`: Build the project for production.
+- `lint`: Run TypeScript, Prettier, and ESLint checks.
+- `lint:prettier`: Run Prettier checks.
+- `preview`: Preview the production build.
 
-- Configure the top-level `parserOptions` property like this:
+## Environment Variables
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+- `VITE_BASE_URL`: Base URL for the application.
+- `VITE_NAV_SELECTOR`: CSS selector for the navigation element.
+
+## DOM Parsing Mechanism
+
+The menu items are parsed from the DOM using a custom utility function. The `parseMenu` function takes the HTML content of the navigation element and converts it into a JSON structure. This JSON structure is then enhanced with additional properties like `id`, `to`, and `img` using the `enhanceMenuWithCustomKeys` function.
+
+### Example
+
+```typescript
+import parseMenu from './utils/dom-parser';
+import { enhanceMenuWithCustomKeys } from './utils/compute-menu-items';
+
+const menuEl = document.querySelector('nav');
+const menuJSON = parseMenu(menuEl?.outerHTML || '');
+const navbarData = enhanceMenuWithCustomKeys(menuJSON);
+
+console.log(navbarData);
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+This mechanism allows for dynamic generation of the menu structure based on the HTML content, making it easy to update the menu without changing the code.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react';
+## Deployment
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-});
-```
+This project is deployed on Vercel. The `main` branch is used for development, and the `production` branch is used for production deployments.
+
+### Branching Strategy
+
+- `main`: Development branch. All new features and bug fixes are merged here.
+- `production`: Production branch. Only stable and tested code is merged here for deployment.
+
+### Deployment Steps
+
+1. Push changes to the `main` branch for development.
+2. Once the changes are tested and stable, create a pull request to merge `main` into `production`.
+3. After the pull request is approved and merged, Vercel will automatically deploy the changes to the production environment.
+
+## Installation
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/alzgo-menu.git
+   ```
+2. Navigate to the project directory:
+   ```sh
+   cd alzgo-menu
+   ```
+3. Install dependencies:
+   ```sh
+   pnpm install
+   ```
+
+## Usage
+
+1. Start the development server:
+   ```sh
+   pnpm run dev
+   ```
+2. Build the project for production:
+   ```sh
+   pnpm run build
+   ```
+3. Preview the production build:
+   ```sh
+   pnpm run preview
+   ```
+
+## License
+
+This project is licensed under the MIT License.

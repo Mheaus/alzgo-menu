@@ -3,18 +3,18 @@ import { MenuItem } from './dom-parser';
 import { BASE_URL } from './env';
 
 const imgMap = {
-  antipollution: '/assets/anti-pollution.png',
-  boitedevitesse: '/assets/gearbox.png',
-  carrosserie: '/assets/body.png',
-  demarrage: '/assets/start.png',
-  direction: '/assets/steering.png',
-  divers: '/assets/miscellaneous.png',
-  eclairage: '/assets/lighting.png',
-  freinage: '/assets/braking.png',
-  habitacle: '/assets/interior.png',
-  moteur: '/assets/engine.png',
-  multimedia: '/assets/multimedia.png',
-  tableaudebord: '/assets/dashboard.png',
+  antipollution: '/assets/anti-pollution.svg',
+  boitedevitesse: '/assets/gearbox.svg',
+  carrosserie: '/assets/body.svg',
+  demarrage: '/assets/start.svg',
+  direction: '/assets/steering.svg',
+  divers: '/assets/miscellaneous.svg',
+  eclairage: '/assets/lighting.svg',
+  freinage: '/assets/braking.svg',
+  habitacle: '/assets/interior.svg',
+  moteur: '/assets/engine.svg',
+  multimedia: '/assets/multimedia.svg',
+  tableaudebord: '/assets/dashboard.svg',
 };
 
 function enhanceMenuWithCustomKeys(menuItems: MenuItem[]): NavbarItem[] {

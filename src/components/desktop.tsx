@@ -13,12 +13,12 @@ function CategoryItem({ item }: CategoryItemProps) {
     <li className={cn('text-base', hasManyChildren && 'row-span-2')}>
       <img src={item.img} className="size-24" />
 
-      <p className="mb-2 mt-4 font-semibold text-black">{item.label}</p>
+      <p className="mb-2 mt-4 font-bold text-black">{item.label}</p>
 
       <ul>
         {item.children?.map((grandChild) => (
           <li className="text-sm" key={grandChild.id}>
-            <a className="font-normal text-black hover:text-second_blue" href={grandChild.to} key={grandChild.id}>
+            <a className="font-normal text-zinc-700 hover:text-second_blue" href={grandChild.to} key={grandChild.id}>
               {grandChild.label}
             </a>
           </li>

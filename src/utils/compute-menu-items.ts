@@ -2,32 +2,19 @@ import { NavbarItem } from '../types/navbar-item';
 import { MenuItem } from './dom-parser';
 import { BASE_URL } from './env';
 
-const tableaudebord = '/assets/board.svg';
-const carrosserie = '/assets/carrosserie.svg';
-const demarrage = '/assets/demarrage.svg';
-const direction = '/assets/direction.svg';
-const divers = '/assets/divers.svg';
-const eclairage = '/assets/eclairage.svg';
-const freinage = '/assets/freinage.svg';
-const habitacle = '/assets/habitacle.svg';
-const moteur = '/assets/moteur.svg';
-const multimedia = '/assets/multimedia.svg';
-const boitedevitesse = '/assets/vitesse.svg';
-const antipollution = '/assets/antipollution.svg';
-
-const imgMap: { [key: string]: string } = {
-  tableaudebord,
-  carrosserie,
-  demarrage,
-  direction,
-  divers,
-  eclairage,
-  freinage,
-  habitacle,
-  moteur,
-  multimedia,
-  boitedevitesse,
-  antipollution,
+const imgMap = {
+  antipollution: '/assets/anti-pollution.png',
+  boitedevitesse: '/assets/gearbox.png',
+  carrosserie: '/assets/body.png',
+  demarrage: '/assets/start.png',
+  direction: '/assets/steering.png',
+  divers: '/assets/miscellaneous.png',
+  eclairage: '/assets/lighting.png',
+  freinage: '/assets/braking.png',
+  habitacle: '/assets/interior.png',
+  moteur: '/assets/engine.png',
+  multimedia: '/assets/multimedia.png',
+  tableaudebord: '/assets/dashboard.png',
 };
 
 function enhanceMenuWithCustomKeys(menuItems: MenuItem[]): NavbarItem[] {
@@ -39,7 +26,7 @@ function enhanceMenuWithCustomKeys(menuItems: MenuItem[]): NavbarItem[] {
       .replace(/[-/_]/g, '') // remove - / _
       .replace(/[^\w]/g, ''); // remove non-word characters
     const to = new URL(item.href).pathname;
-    const img = `${BASE_URL}${imgMap[id] || tableaudebord}`;
+    const img = `${BASE_URL}${(imgMap as { [key: string]: string })[id] || imgMap.tableaudebord}`;
 
     return {
       id,

@@ -2,6 +2,8 @@ import * as React from 'react';
 import { NavbarItem } from '../types/navbar-item';
 import { cn } from '../utils/cn';
 import Icon from './icon';
+import AccountIcon from '../../public/icons/account-nav.png';
+import ShoppingIcon from '../../public/icons/shopping-nav.png';
 
 const CategoryItem = ({ child, onClick, isOpen }: { child: NavbarItem; onClick: () => void; isOpen: boolean }) => {
   return (
@@ -40,10 +42,18 @@ function NavbarMobile({ items }: { items: NavbarItem[] }) {
       [childId]: !prev[childId],
     }));
   };
-
   return (
-    <nav className="relative w-full flex-col">
-      <div className="flex h-16 w-full items-center justify-end bg-dark_blue px-6">
+    <nav className="relative flex w-full flex-col tablet:flex">
+      <div className="flex h-16 w-full items-center justify-between bg-dark_blue px-6">
+        <a href="//alzgo.fr/panier?action=show">
+          <button className="flex items-center rounded-full border border-second_blue p-1 pl-6 pr-6">
+            <img className="mr-2 w-4" src={ShoppingIcon}></img>
+            <p className="text-second_blue">00.00</p>
+          </button>
+        </a>
+        <a href="https://alzgo.fr/mon-compte">
+          <img src={AccountIcon}></img>
+        </a>
         <button className="flex scale-125 flex-col gap-1" onClick={() => setIsOpen((prev) => !prev)} type="button">
           <span
             className={cn(`block h-0.5 w-6 bg-second_blue transition-transform`, isOpen && 'translate-y-1.5 rotate-45')}

@@ -43,7 +43,7 @@ function NavbarMobile({ items }: { items: NavbarItem[] }) {
     }));
   };
   return (
-    <nav className="relative flex w-full flex-col tablet:flex">
+    <nav className="relative flex w-full flex-col tablet:flex lg:hidden">
       <div className="flex h-16 w-full items-center justify-between bg-dark_blue px-6">
         <a href="//alzgo.fr/panier?action=show">
           <button className="flex items-center rounded-full border border-second_blue p-1 pl-6 pr-6">

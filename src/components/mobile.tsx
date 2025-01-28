@@ -5,6 +5,9 @@ import Icon from './icon';
 import AccountIcon from '../../public/icons/account-nav.png';
 import ShoppingIcon from '../../public/icons/shopping-nav.png';
 
+import $ from 'jquery';
+import { CartMobile } from './cartMobile';
+
 const CategoryItem = ({ child, onClick, isOpen }: { child: NavbarItem; onClick: () => void; isOpen: boolean }) => {
   return (
     <li className="group text-black" data-open={Boolean(isOpen)}>
@@ -42,15 +45,30 @@ function NavbarMobile({ items }: { items: NavbarItem[] }) {
       [childId]: !prev[childId],
     }));
   };
+
+  // waiting the DOM
+  $(document).ready(() => {
+    const $cartElement = $('.elementor-cart');
+    // cartMobile instance
+    const cartMobile = new CartMobile($cartElement);
+    cartMobile.bindEvents();
+  });
+
   return (
     <nav className="relative flex w-full flex-col tablet:flex lg:hidden">
       <div className="flex h-16 w-full items-center justify-between bg-dark_blue px-6">
-        <a href="//alzgo.fr/panier?action=show">
-          <button className="flex items-center rounded-full border border-second_blue p-1 pl-6 pr-6">
-            <img className="mr-2 w-4" src={ShoppingIcon}></img>
-            <p className="text-second_blue">00.00</p>
-          </button>
-        </a>
+        <div className="elementor-cart">
+          <div className="elementor-cart__container elementor-cart-hidden">
+            <button className="elementor-cart__close-button"></button>
+            <div></div>
+          </div>
+          <a className="elementor-cart__toggle elementor-button" href="https://alzgo.fr/panier?action=show">
+            <button className="flex items-center rounded-full border border-second_blue p-1 pl-6 pr-6">
+              <img className="mr-2 w-4" src={ShoppingIcon}></img>
+              <p className="text-second_blue">00.00</p>
+            </button>
+          </a>
+        </div>
         <a href="https://alzgo.fr/mon-compte">
           <img src={AccountIcon}></img>
         </a>

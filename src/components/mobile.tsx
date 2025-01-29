@@ -63,7 +63,7 @@ function NavbarMobile({ items }: { items: NavbarItem[] }) {
       <div className="flex h-16 w-full items-center justify-between bg-dark_blue px-6">
         <div className="elementor-cart">
           <button
-            className={`${classes.toggle} flex items-center rounded-full border border-second_blue p-1 pl-6 pr-6`}
+            className={cn(classes.toggle, 'flex items-center rounded-full border border-second_blue p-1 px-6')}
             onClick={toggleCart}
           >
             <img className="mr-2 w-4" src={ShoppingIcon}></img>

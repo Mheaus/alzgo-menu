@@ -13,7 +13,6 @@
   "dependencies": {
     "@fontsource/host-grotesk": "^5.0.1",
     "clsx": "^2.1.1",
-    "jquery": "^3.7.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "tailwind-merge": "^2.6.0"

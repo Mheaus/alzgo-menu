@@ -5,7 +5,7 @@ interface CartProps {
   closeCart: () => void;
 }
 
-const Cart: React.FC<CartProps> = ({ isShown, closeCart }) => {
+const Cart = ({ isShown, closeCart }: CartProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleClickOutside = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {

@@ -71,7 +71,7 @@ function NavbarMobile({ items }: { items: NavbarItem[] }) {
           </button>
         </div>
         <CartMobile isShown={isCartShown} closeCart={closeCart} />
-        <a href="https://alzgo.fr/mon-compte">
+        <a href="/mon-compte">
           <img src={AccountIcon}></img>
         </a>
         <button className="flex scale-125 flex-col gap-1" onClick={() => setIsOpen((prev) => !prev)} type="button">

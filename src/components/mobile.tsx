@@ -2,6 +2,12 @@ import * as React from 'react';
 import { NavbarItem } from '../types/navbar-item';
 import { cn } from '../utils/cn';
 import Icon from './icon';
+import { useState } from 'react';
+import CartMobile from './cartMobile';
+
+const classes = {
+  toggle: 'elementor-cart__toggle elementor-button',
+};
 
 const CategoryItem = ({ child, onClick, isOpen }: { child: NavbarItem; onClick: () => void; isOpen: boolean }) => {
   return (
@@ -41,9 +47,32 @@ function NavbarMobile({ items }: { items: NavbarItem[] }) {
     }));
   };
 
+  const [isCartShown, setIsCartShown] = useState(false);
+
+  const toggleCart = () => {
+    setIsCartShown((prev) => !prev);
+  };
+
+  const closeCart = () => {
+    setIsCartShown(false);
+  };
+
   return (
-    <nav className="relative w-full flex-col">
-      <div className="flex h-16 w-full items-center justify-end bg-dark_blue px-6">
+    <nav className="relative flex w-full flex-col tablet:flex lg:hidden">
+      <div className="flex h-16 w-full items-center justify-between bg-dark_blue px-6">
+        <div className="elementor-cart">
+          <button
+            className={cn(classes.toggle, 'flex items-center rounded-full border border-second_blue p-1 px-6')}
+            onClick={toggleCart}
+          >
+            <Icon name="shop-nav" className="mr-2 w-4" />
+            <p className="text-second_blue">{/*{prestashop.cart.totals.total.value}*/}0.00€</p>
+          </button>
+        </div>
+        <CartMobile isShown={isCartShown} closeCart={closeCart} />
+        <a href="/mon-compte">
+          <Icon name="account-nav" />
+        </a>
         <button className="flex scale-125 flex-col gap-1" onClick={() => setIsOpen((prev) => !prev)} type="button">
           <span
             className={cn(`block h-0.5 w-6 bg-second_blue transition-transform`, isOpen && 'translate-y-1.5 rotate-45')}

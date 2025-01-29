@@ -4,7 +4,7 @@ import { enhanceMenuWithCustomKeys } from '../utils/compute-menu-items';
 import parseMenu from '../utils/dom-parser';
 import { NAV_SELECTOR } from '../utils/env';
 import DesktopNavItem from './desktop';
-// import NavbarMobile from './mobile';
+import NavbarMobile from './mobile';
 
 function Navbar() {
   const [, setRendered] = React.useState(false);
@@ -28,12 +28,11 @@ function Navbar() {
           document.querySelector(NAV_SELECTOR)?.classList.add('lg:hidden');
         }}
       >
-        <ul className="flex w-full items-center justify-center gap-4">
+        <ul className="hidden w-full items-center justify-center gap-4 md:flex">
           {navbarItems?.map((item) => <DesktopNavItem key={item.id} item={item} />)}
         </ul>
       </nav>
-
-      {/* <NavbarMobile items={navbarItems} /> */}
+      <NavbarMobile items={navbarItems} />
     </>
   );
 }

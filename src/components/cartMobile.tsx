@@ -1,5 +1,75 @@
 import React, { useRef } from 'react';
 
+{
+  /*const prestashopMock = `
+  <div
+  class="elementor-element elementor-element-a8c7c5d ce-mobile-valign-center elementor-column elementor-col-33 elementor-top-column"
+  data-id="a8c7c5d"
+  data-element_type="column"
+>
+  <div class="elementor-column-wrap elementor-element-populated">
+    <div class="elementor-widget-wrap">
+      <div
+        class="elementor-element elementor-element-9d2b2d4 elementor-cart--show-subtotal-yes elementor-cart--align-icon-left elementor-cart--items-indicator-bubble elementor-cart--show-shipping-yes elementor-cart--show-view-cart-yes elementor-cart--buttons-inline elementor-widget elementor-widget-shopping-cart"
+        data-id="9d2b2d4"
+        data-element_type="widget"
+        data-settings='{"action_show_modal":"yes","modal_url":"https://alzgo.fr/module/creativeelements/ajax","remove_item_icon":{"value":"far fa-circle-xmark","library":"fa-regular"}}'
+        data-widget_type="shopping-cart.default"
+      >
+        <div class="elementor-widget-container">
+          <div class="elementor-cart__container elementor-lightbox elementor-cart--shown">
+            <div class="elementor-cart__main">
+              <div class="elementor-cart__close-button ceicon-close"></div>
+              <div class="elementor-cart__title"></div>
+              <div class="elementor-cart__empty-message">Aucun produit dans le chariot.</div>
+              <div class="elementor-cart__products ce-scrollbar--auto" data-gift="Cadeau"></div>
+              <div class="elementor-cart__summary">
+                <div class="elementor-cart__summary-label">0 articles</div>
+                <div class="elementor-cart__summary-value">0,00&nbsp;€</div>
+                <span class="elementor-cart__summary-label">Livraison</span>
+                <span class="elementor-cart__summary-value"></span>
+                <strong class="elementor-cart__summary-label">Total</strong>
+                <strong class="elementor-cart__summary-value">0,00&nbsp;€</strong>
+              </div>
+              <div class="elementor-alert elementor-alert-warning elementor-hidden" role="alert">
+                <span class="elementor-alert-description"></span>
+              </div>
+              <div class="elementor-cart__footer-buttons">
+                <div class="elementor-align-justify">
+                  <a
+                    href="//alzgo.fr/panier?action=show"
+                    class="elementor-button elementor-button--view-cart elementor-size-md"
+                  >
+                    <span class="elementor-button-text">Voir le panier</span>
+                  </a>
+                </div>
+                <div class="elementor-align-justify">
+                  <a
+                    href="https://alzgo.fr/commande"
+                    class="elementor-button elementor-button--checkout elementor-size-md ce-disabled"
+                  >
+                    <span class="elementor-button-text">Commander</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="elementor-cart__toggle">
+            <a href="//alzgo.fr/panier?action=show" class="elementor-button elementor-size-sm">
+              <span class="elementor-button-icon" data-counter="0">
+                <i aria-hidden="true" class="ceicon-basket-solid"></i> <span class="elementor-screen-only">Panier</span>
+              </span>
+              <span class="elementor-button-text">0,00&nbsp;€</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+*/
+}
 interface CartProps {
   isShown: boolean;
   closeCart: () => void;
@@ -14,6 +84,7 @@ const Cart = ({ isShown, closeCart }: CartProps) => {
     }
   };
 
+  // const data = typeof window.prestashop === 'undefined' ? prestashopMock : window.prestashop;
   return (
     <div
       ref={containerRef}

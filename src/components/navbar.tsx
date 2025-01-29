@@ -28,7 +28,7 @@ function Navbar() {
           document.querySelector(NAV_SELECTOR)?.classList.add('lg:hidden');
         }}
       >
-        <ul className="hidden w-full items-center justify-center gap-4 lg:flex">
+        <ul className="hidden w-full items-center justify-center gap-4 md:flex">
           {navbarItems?.map((item) => <DesktopNavItem key={item.id} item={item} />)}
         </ul>
       </nav>
